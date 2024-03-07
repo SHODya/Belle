@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://justfreefonts.com/download-font.php?font_id=421');
+html, body{
+    font-family: 'Inter', sans-serif;
+}
+
+.mw {
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 80% !important;
+    margin: 0 auto;
+}
+
+.nav-img {
+    padding: 6px 12px;
+}
+
+.navbar-nav {
+    display: inline-block;
+}
+
+.nav-item {
+    display: inline-block;
+    padding: 6px 12px;
+}
+
+.nav-link:hover {
+    text-transform: none;
+}
+
+.links-line {
+    display: flex;
+}
+
+.link-line {
+    padding-left:12px;
+}
+
+.link-custom {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: var(--bs-nav-link-color);
+    text-decoration: none;
+    background: none;
+    border: 0;
+}
+
+.navbar-item-text {
+    margin: 0;
+    color: #000;
+    font-family: "Inter";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 0;
+}
+
+.poster-text {
+    color: #000;
+    font-family: Blue curve;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.full-img {
+    width: 100%;
+    display: flex;
+}
+
+.size1-img {
+    max-width: 1200px;
+}
+
+.main-img {
+    position: relative;
+    text-align: center;
+
+    font-family: Blue curve;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+
+    width: 1440px;
+    height: 500px;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.Content-Blocks {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+
+.Content-Block {
+    position: relative;
+    text-align: center;
+
+    font-family: Blue curve;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+
+    margin-top: 20px;
+}
+
+.Left-Black-p {
+    position: absolute;
+    bottom: 250px;
+    left: 160px;
+
+    font-size: 64px;
+    color: #000;
+}
+
+.Left-Black-p-buy {
+    position: absolute;
+    bottom: 125px;
+    left: 162px;
+
+    font-size: 48px;
+    color: #000;
+    padding-bottom: 8px;
+    border-bottom: #000 2px solid;
+}
+
+.Right-White-p {
+    position: absolute;
+    bottom: 65%;
+    right: 11%;
+
+    font-size: 64px;
+    color: #fff;
+}
+
+.Right-White-p-buy {
+    position: absolute;
+    bottom: 40%;
+    right: 40%;
+
+    font-size: 48px;
+    color: #fff;
+    padding-bottom: 8px;
+    border-bottom: #fff 2px solid;
+}
+
+.Main-Img-p {
+    position: absolute;
+    bottom: 750px;
+    left: 475px;
+
+    font-size: 64px;
+    color: #fff;
+}
+
+.Main-Img-p-buy {
+    position: absolute;
+    bottom: 625px;
+    left: 475px;
+
+    font-size: 48px;
+    color: #fff;
+    padding-bottom: 8px;
+    border-bottom: #fff 2px solid;
+}
+
+.popular {
+    display: flex;
+    flex-wrap: wrap;
+
+    flex-direction: column;
+    align-content: center;
+
+    color: #000;
+    font-family: "Inter";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    padding: 0;
+    margin-top: 20px;
+}
+
+.popular-blocks {
+    display: flex;
+    position: relative;
+    text-align: center;
+
+    color: #000;
+    font-family: "Inter";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    margin-top: 12px;
+    padding: 0;
+
+    max-width: 1200px;
+}
+
+.popular-block {
+   margin-right: 45px;
+   padding: 0;
+}
+
+.popular-block:last-of-type {
+    margin-right: 0px;
+    padding: 0;
+ }
+
+.item-fav1 {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.item-fav2 {
+    position: absolute;
+    top: 20px;
+    right: 434px;
+}
+
+.item-fav3 {
+    position: absolute;
+    top: 20px;
+    left: 309px;
+}
+/* 
+.Scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.Scroll-Wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1%;
+}
+
+#BackBtn, #NextBtn {
+    margin: 1%;
+    cursor: pointer;
+} */

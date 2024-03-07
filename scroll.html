@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            height: 100vh;
+            background-color: white;
+        }
+
+        .cover {
+            height: 500px;
+        }
+
+        .main-scroll-div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 500px;
+        }
+
+        .scroll-images {
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            position: relative;
+            scroll-behavior: smooth;
+            overflow: auto;
+        }
+
+        .child {
+            width: 1440px;
+            height: 500px;
+            margin: 1px 10px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .scroll-images::-webkit-scrollbar {
+            display: none ;
+        }
+
+        .child-img {
+            width: 1440px;
+            height: 500px;
+            object-fit:scale-down;
+        }
+
+    </style>
+</head>
+<body>
+<div class="main-scroll-div">
+    <div></div>
+    <div class="cover">
+        <div class="scroll-images">
+            <div class="child"><img class="child-img" src="/images/Scrollimg1.jpg"></div>
+            <div class="child"><img class="child-img" src="/images/Scrollimg1.jpg"></div>
+            <div class="child"><img class="child-img" src="/images/Scrollimg1.jpg"></div>
+            <div class="child"><img class="child-img" src="/images/Scrollimg1.jpg"></div>
+
+        </div>
+    </div>
+    <div></div>
+</div>
+
+
+
+    <script>
+
+    </script>
+</body>
+</html>
