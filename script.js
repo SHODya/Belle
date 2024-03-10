@@ -5,7 +5,8 @@
 //         document.getElementById("heartVoid").src = "/images/HeartVoid.png";
 //     }
 // }
-const heart = document.getElementById("heartVoid");
-function changeImage() {
-    heart.classList.add("clicked");
+// const heart = document.getElementById("heartVoid");
+
+function changeImage(element) {
+    element.classList.add("clicked");
 }

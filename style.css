@@ -69,6 +69,20 @@ html, body{
     line-height: normal;
 }
 
+.Inter {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.BlueCurve {
+    font-family: Blue curve;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
 .full-img {
     width: 100%;
     display: flex;
@@ -194,7 +208,6 @@ html, body{
 .popular-blocks {
     display: flex;
     position: relative;
-    text-align: center;
 
     color: #000;
     font-family: "Inter";
