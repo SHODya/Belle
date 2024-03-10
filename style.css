@@ -232,22 +232,32 @@ html, body{
     padding: 0;
  }
 
-.item-fav1 {
+ .item-fav1 {
     position: absolute;
     top: 20px;
-    right: 20px;
+    left: 309px;
+    font-size: 36px;
 }
 
 .item-fav2 {
     position: absolute;
     top: 20px;
     right: 434px;
+    font-size: 36px;
 }
 
 .item-fav3 {
     position: absolute;
     top: 20px;
-    left: 309px;
+    right: 20px;
+    font-size: 36px;
+}
+
+.fav-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    color:grey;
 }
 /* 
 .Scroll::-webkit-scrollbar {

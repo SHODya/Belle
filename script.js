@@ -7,6 +7,15 @@
 // }
 // const heart = document.getElementById("heartVoid");
 
+// function changeImage(element) {
+//     element.classList.add("clicked");
+// }
+
 function changeImage(element) {
-    element.classList.add("clicked");
+    if (element.style.color == "red") {
+        element.style.color = "grey"
+    }
+    else {
+        element.style.color = "red"
+    }
 }
