@@ -3,6 +3,21 @@
 html, body{
     font-family: 'Inter', sans-serif;
 }
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.wraper {
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex-grow: 1;
+}
 
 .mw {
     margin: 0 auto;
@@ -25,13 +40,16 @@ html, body{
     display: inline-block;
     padding: 6px 12px;
 }
-
+.navbar {
+    min-width: 100%;
+}
 .nav-link:hover {
     text-transform: none;
 }
 
 .links-line {
     display: flex;
+    align-items: center;
 }
 
 .link-line {
@@ -225,6 +243,8 @@ html, body{
 .popular-block {
    margin-right: 45px;
    padding: 0;
+   display: flex;
+   flex-direction: column;
 }
 
 .popular-block:last-of-type {
@@ -258,6 +278,53 @@ html, body{
     border: none;
     outline: none;
     color:grey;
+}
+
+.margin-12 {
+    margin: 12px;
+}
+
+.margin-24 {
+    margin: 24px;
+}
+
+.margin-36 {
+    margin-left: 36px;
+}
+
+.margin-72 {
+    margin: 72px;
+}
+
+.margin-356 {
+    margin: 356px;
+}
+
+
+.bottomInfo {
+    background-color: #000;
+    width: 100%;
+    height: 400px;
+    margin-top: 72px;
+    display: flex;
+    justify-content:space-between;
+}
+
+.bottomInfos {
+    margin-left: 180px;
+    display: contents;
+    padding: 0;
+    margin: 0;
+}
+
+.infoHeader {
+    color: #fff;
+    margin: 20px;
+}
+
+.infoItem {
+    color: grey;
+    margin: 16px
 }
 /* 
 .Scroll::-webkit-scrollbar {
