@@ -41,7 +41,7 @@ html, body {
     padding: 6px 12px;
 }
 .navbar {
-    min-width: 100%;
+    width: 100%;
 }
 .nav-link:hover {
     text-transform: none;
