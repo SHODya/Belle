@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://justfreefonts.com/download-font.php?font_id=421');
 html, body{
-    font-family: 'Inter', sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 html, body {
     height: 100%;
@@ -70,9 +70,9 @@ html, body {
 .navbar-item-text {
     margin: 0;
     color: #000;
-    font-family: "Inter";
+    font-family: "Arial";
     font-size: 18px;
-    font-style: normal;
+    font-style: sans-serif;
     font-weight: 400;
     line-height: normal;
     padding: 0;
@@ -82,21 +82,21 @@ html, body {
     color: #000;
     font-family: Blue curve;
     font-size: 64px;
-    font-style: normal;
+    font-style: sans-serif;
     font-weight: 300;
     line-height: normal;
 }
 
 .Inter {
-    font-family: "Inter";
-    font-style: normal;
+    font-family: "Arial";
+    font-style: sans-serif;
     font-weight: 400;
     line-height: normal;
 }
 
 .BlueCurve {
-    font-family: Blue curve;
-    font-style: normal;
+    font-family: Arial;
+    font-style: sans-serif;
     font-weight: 300;
     line-height: normal;
 }
@@ -114,8 +114,8 @@ html, body {
     position: relative;
     text-align: center;
 
-    font-family: Blue curve;
-    font-style: normal;
+    font-family: Arial;
+    font-style: sans-serif;
     font-weight: 300;
     line-height: normal;
 
@@ -137,8 +137,8 @@ html, body {
     position: relative;
     text-align: center;
 
-    font-family: Blue curve;
-    font-style: normal;
+    font-family: Arial;
+    font-style: sans-serif;
     font-weight: 300;
     line-height: normal;
 
@@ -157,7 +157,7 @@ html, body {
 .Left-Black-p-buy {
     position: absolute;
     bottom: 125px;
-    left: 162px;
+    left: 165px;
 
     font-size: 48px;
     color: #000;
@@ -177,7 +177,7 @@ html, body {
 .Right-White-p-buy {
     position: absolute;
     bottom: 40%;
-    right: 40%;
+    right: 43%;
 
     font-size: 48px;
     color: #fff;
@@ -213,9 +213,9 @@ html, body {
     align-content: center;
 
     color: #000;
-    font-family: "Inter";
+    font-family: "Arial";
     font-size: 18px;
-    font-style: normal;
+    font-style: sans-serif;
     font-weight: 400;
     line-height: normal;
 
@@ -228,9 +228,9 @@ html, body {
     position: relative;
 
     color: #000;
-    font-family: "Inter";
+    font-family: "Arial";
     font-size: 18px;
-    font-style: normal;
+    font-style: sans-serif;
     font-weight: 400;
     line-height: normal;
 
@@ -319,7 +319,7 @@ html, body {
 
 .infoHeader {
     color: #fff;
-    margin: 20px;
+    margin: 16px;
 }
 
 .infoItem {
