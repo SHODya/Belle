@@ -368,3 +368,8 @@ html, body {
     display: flex;
     justify-content: center;
 }
+
+.alItems-c {
+    display: flex;
+    align-items: center;
+}

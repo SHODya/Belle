@@ -1,6 +1,6 @@
 <?php
 
-require_once 'connect.php';
+require_once 'config/connect.php';
 
 ?>
 
@@ -8,8 +8,9 @@ require_once 'connect.php';
 
 // Запрос к базе данных для получения всех продуктов
 $query = "SELECT * FROM `Products`";
-$products = mysqli_query($connect, $query);
-$products = mysqli_fetch_all($products);
+$products_result = mysqli_query($mysqli, $query);
+$products = mysqli_fetch_all($products_result);
+
 
 // Функция для отображения изображения из базы данных
 function displayImage($imageId, $connect)
@@ -35,8 +36,9 @@ function displayImage($imageId, $connect)
 
 <?php
 $query = "SELECT * FROM `Site-Images` ORDER BY id";
-$images = mysqli_query($connect, $query);
-$images = mysqli_fetch_all($images);
+$images_result = mysqli_query($mysqli, $query);
+$images = mysqli_fetch_all($images_result);
+
 ?>
 
 <!DOCTYPE html>
@@ -114,7 +116,7 @@ $images = mysqli_fetch_all($images);
 
         // Отображение надписи "Популярное" и изображений
         echo '<div class="popular">';
-        echo '<div class="jc-c">';
+        echo '<div class="alItems-c">';
         echo '<a href="index.html" class="nav-link">Популярное</a>';
         echo '<a href="index.html"><img src="images/Arrow-right.png" class="link-line"></a>';
         echo '</div>';
@@ -135,8 +137,6 @@ $images = mysqli_fetch_all($images);
         echo '</div>'; // Закрытие контейнера для блоков
         echo '</div>'; // Закрытие контейнера для "Популярное"
         
-        // Закрытие соединения с базой данных
-        mysqli_close($connect);
         ?>
 
 

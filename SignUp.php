@@ -1,3 +1,51 @@
+<?php
+require_once 'config/connect.php';
+?>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	// Проверка наличия данных
+	if (isset($_POST['name']) && isset($_POST['Email']) && isset($_POST['password']) && isset($_POST['confirm_password'])) {
+		// Получение данных из формы
+		$name = $_POST['name'];
+		$email = $_POST['Email'];
+		$password = $_POST['password'];
+		$confirm_password = $_POST['confirm_password'];
+
+		// Проверка совпадения паролей
+		if ($password !== $confirm_password) {
+			echo "Введенные пароли не совпадают!";
+		} else {
+			// Хеширование пароля перед сохранением
+			$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+			// SQL-запрос для вставки данных в таблицу Users
+			$sql = "INSERT INTO Users (name, email, password) VALUES (?, ?, ?)";
+			if ($stmt = $mysqli->prepare($sql)) {
+				// Привязка параметров
+				$stmt->bind_param("sss", $name, $email, $hashed_password);
+
+				// Попытка выполнения запроса
+				if ($stmt->execute()) {
+					echo "Пользователь успешно зарегистрирован!";
+					header("Location: SignIn.php");
+				} else {
+					echo "Ошибка при выполнении запроса: " . $stmt->error;
+				}
+
+				// Закрытие запроса
+				$stmt->close();
+			} else {
+				echo "Ошибка при подготовке запроса: " . $mysqli->error;
+			}
+		}
+	} else {
+		echo "Пожалуйста, заполните все поля формы!";
+	}
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +86,10 @@
 				</div>
 			</nav>
 		</div>
+		<p>
+			<label for="Name" class="floatLabel">Имя</label>
+			<input id="name" name="name" type="text">
+		</p>
 		<p>
 			<label for="Email" class="floatLabel">Почта</label>
 			<input id="Email" name="Email" type="email">
