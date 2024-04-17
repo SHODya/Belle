@@ -36,20 +36,20 @@ html, body {
     display: inline-block;
 }
 
+.nav-link {
+    text-decoration: none;
+}
+
 .nav-item {
     display: inline-block;
     padding: 6px 12px;
+    text-decoration: none;
 }
 .navbar {
     width: 100%;
 }
 .nav-link:hover {
     text-transform: none;
-}
-
-.links-line {
-    display: flex;
-    align-items: center;
 }
 
 .link-line {
@@ -289,7 +289,7 @@ html, body {
 }
 
 .margin-36 {
-    margin-left: 36px;
+    margin: 36px;
 }
 
 .margin-72 {
@@ -298,6 +298,38 @@ html, body {
 
 .margin-356 {
     margin: 356px;
+}
+
+.fontSize-12 {
+    font-size: 12px;
+}
+
+.fontSize-24 {
+    font-size: 24px;
+}
+
+.fontSize-36 {
+    font-size: 36px;
+}
+
+.fontSize-48 {
+    font-size: 48px;
+}
+
+.fontSize-72 {
+    font-size: 72px;
+}
+
+.fontSize-128 {
+    font-size: 128px;
+}
+
+.fontSize-156 {
+    font-size: 156px;
+}
+
+.gray {
+    color: gray;
 }
 
 
@@ -326,19 +358,13 @@ html, body {
     color: grey;
     margin: 16px
 }
-/* 
-.Scroll::-webkit-scrollbar {
-    display: none;
-}
 
-.Scroll-Wrap {
+.jc-c {
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin: 1%;
 }
 
-#BackBtn, #NextBtn {
-    margin: 1%;
-    cursor: pointer;
-} */
+.LogReg {
+    display: flex;
+    justify-content: center;
+}
