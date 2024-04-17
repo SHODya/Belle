@@ -79,7 +79,7 @@ $images = mysqli_fetch_all($images);
                     <nav class="nav-item btn">
                         <a href=""><img class="nav-img" src="images/Heart.png"></a>
                         <a href=""><img class="nav-img" src="images/Bag.png"></a>
-                        <a href="LogReg.html"><img class="nav-img" src="images/Profile.png"></a>
+                        <a href="SignIn.php"><img class="nav-img" src="images/Profile.png"></a>
                     </nav>
                 </div>
             </div>
