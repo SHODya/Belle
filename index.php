@@ -7,16 +7,16 @@ require_once 'config/connect.php';
 <?php
 
 // Запрос к базе данных для получения всех продуктов
-$query = "SELECT * FROM `Products`";
-$products_result = mysqli_query($mysqli, $query);
-$products = mysqli_fetch_all($products_result);
+$query = "SELECT * FROM `Popular`";
+$popular_result = mysqli_query($mysqli, $query);
+$popular = mysqli_fetch_all($popular_result);
 
 
 // Функция для отображения изображения из базы данных
 function displayImage($imageId, $connect)
 {
     // Запрос к базе данных для получения изображения по его идентификатору
-    $imgquery = "SELECT image_blob FROM Products WHERE id = $imageId";
+    $imgquery = "SELECT image_blob FROM Popular WHERE id = $imageId";
     $result = mysqli_query($connect, $imgquery);
 
     // Проверка наличия изображения
@@ -56,6 +56,7 @@ $images = mysqli_fetch_all($images_result);
     <link href="css/style.css" rel="stylesheet">
     <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/adf5d34ddb.js" crossorigin="anonymous"></script>
+
     <title>Belle</title>
 </head>
 
@@ -66,10 +67,10 @@ $images = mysqli_fetch_all($images_result);
                 <div class="menu ">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link navbar-item-text ">Мужчинам</a>
+                            <a href="man.php" class="nav-link navbar-item-text ">Мужчинам</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link navbar-item-text ">Женщинам</a>
+                            <a href="woman.php" class="nav-link navbar-item-text ">Женщинам</a>
                         </li>
                     </ul>
                 </div>
@@ -79,8 +80,8 @@ $images = mysqli_fetch_all($images_result);
                 </nav>
                 <div class="menu">
                     <nav class="nav-item btn">
-                        <a href=""><img class="nav-img" src="images/Heart.png"></a>
-                        <a href=""><img class="nav-img" src="images/Bag.png"></a>
+                        <a href="favorite.php"><img class="nav-img" src="images/Heart.png"></a>
+                        <a href="cart.php"><img class="nav-img" src="images/Bag.png"></a>
                         <a href="SignIn.php"><img class="nav-img" src="images/Profile.png"></a>
                     </nav>
                 </div>
@@ -97,7 +98,7 @@ $images = mysqli_fetch_all($images_result);
                     <a href="">
                         <img src="images/img4.jpg" class="size1-img">
                         <a href="index.html" class="Left-Black-p link-custom">Твой новый топ</a>
-                        <a href="index.html" class="Left-Black-p-buy link-custom">Купить</a>
+                        <a href="product.php" class="Left-Black-p-buy link-custom">Купить</a>
                     </a>
                 </div>
                 <div class="Content-Block">
@@ -121,16 +122,16 @@ $images = mysqli_fetch_all($images_result);
         echo '<a href="index.html"><img src="images/Arrow-right.png" class="link-line"></a>';
         echo '</div>';
         echo '<div class="popular-blocks">'; // Начало контейнера для блоков
-        foreach ($products as $index => $product) {
+        foreach ($popular as $index => $popproduct) {
             $heartId = 'heartVoid' . ($index + 1); // Динамический идентификатор для кнопки сердца
             ?>
             <div class="popular-block">
-                <a href="index.html"><img src="data:image/jpeg;base64,<?= base64_encode($product[4]) ?>"
+                <a href="index.html"><img src="data:image/jpeg;base64,<?= base64_encode($popproduct[4]) ?>"
                         class="popular-img"></a>
                 <button id="<?= $heartId ?>" class="item-fav<?= $index + 1 ?> fav-btn"><i class="fa-solid fa-heart"
                         onclick="changeImage(this)"></i></button>
-                <a href="" class="Inter nav-link margin-12"><?= $product[1] ?></a>
-                <a href="" class="BlueCurve nav-link margin-12"><?= $product[2] ?>тг</a>
+                <a href="" class="Inter nav-link margin-12"><?= $popproduct[1] ?></a>
+                <a href="" class="BlueCurve nav-link margin-12"><?= $popproduct[2] ?>тг</a>
             </div>
             <?php
         }
@@ -207,7 +208,10 @@ $images = mysqli_fetch_all($images_result);
             </div>
 
         </bottom>
+
+
     </wraper>
+
 
 </body>
 

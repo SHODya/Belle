@@ -88,15 +88,6 @@ function getMessage(string $key): string
     return $message;
 }
 
-function getPDO(): PDO
-{
-    try {
-        return new \PDO('mysql:host=' . DB_HOST . ';port=' .  ';charset=utf8;dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD);
-    } catch (\PDOException $e) {
-        die("Connection error: {$e->getMessage()}");
-    }
-}
-
 function findUser(string $email): array|bool
 {
     $pdo = getPDO();
@@ -132,13 +123,14 @@ function logout(): void
 function checkAuth(): void
 {
     if (!isset($_SESSION['user_id'])) {
-        redirect('/');
+        header('Location: /../SignIn.php');
+        exit();
     }
 }
 
 function checkGuest(): void
 {
     if (isset($_SESSION['user_id'])) {
-        redirect('/cabinet.php');
+        redirect('/../cabinet.php');
     }
 }

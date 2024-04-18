@@ -30,10 +30,10 @@ $user = currentUser();
                 <div class="menu ">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link navbar-item-text ">Мужчинам</a>
+                            <a href="man.php" class="nav-link navbar-item-text ">Мужчинам</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link navbar-item-text ">Женщинам</a>
+                            <a href="woman.php" class="nav-link navbar-item-text ">Женщинам</a>
                         </li>
                     </ul>
                 </div>

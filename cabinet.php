@@ -30,10 +30,10 @@ $user = currentUser();
                 <div class="menu ">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link navbar-item-text ">Мужчинам</a>
+                            <a href="man.php" class="nav-link navbar-item-text ">Мужчинам</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link navbar-item-text ">Женщинам</a>
+                            <a href="woman.php" class="nav-link navbar-item-text ">Женщинам</a>
                         </li>
                     </ul>
                 </div>
@@ -53,13 +53,13 @@ $user = currentUser();
         <div class="header-link-line">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link gray">Главная</a>
+                    <a href="/index.php" class="nav-link gray">Главная</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link gray">></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link gray">Аккаунт</a>
+                    <a href="cabinet.php" class="nav-link gray">Аккаунт</a>
                 </li>
             </ul>
         </div>
@@ -122,6 +122,44 @@ $user = currentUser();
 
         </main>
 
+        <bottom>
+            <div class="bottomInfo">
+                <div class="bottomInfos">
+                    <div class="margin-12">
+                        <a href="" class="infoHeader Inter nav-link">Покупателю</a>
+                        <a href="" class="infoItem Inter nav-link">Акции</a>
+                        <a href="" class="infoItem Inter nav-link">Доставка</a>
+                        <a href="" class="infoItem Inter nav-link">Оплата</a>
+                        <a href="" class="infoItem Inter nav-link">Обмен и возврат</a>
+                        <a href="" class="infoItem Inter nav-link">Забрать в магазине</a>
+                        <a href="" class="infoItem Inter nav-link">Размеры</a>
+                        <a href="" class="infoItem Inter nav-link">FAQ</a>
+                        <a href="" class="infoItem Inter nav-link">Уход за одеждой</a>
+                    </div>
+                    <div class="margin-12">
+                        <a href="" class="infoHeader Inter nav-link">Клубная программа</a>
+                        <a href="" class="infoItem Inter nav-link">Частые вопросы</a>
+                        <a href="" class="infoItem Inter nav-link">Правила участия</a>
+                        <a href="" class="infoItem Inter nav-link">Стать участником</a>
+                        <a href="" class="infoItem Inter nav-link">Виды карт</a>
+                    </div>
+                    <div class="margin-12">
+                        <a href="" class="infoHeader Inter nav-link">О компании</a>
+                        <a href="" class="infoItem Inter nav-link">Новости</a>
+                        <a href="" class="infoItem Inter nav-link">Адреса магазинов</a>
+                        <a href="" class="infoItem Inter nav-link">Публичная оферта</a>
+                        <a href="" class="infoItem Inter nav-link">Пользовательское соглашение</a>
+                    </div>
+                    <div class="margin-12">
+                        <img src="images/BelleWhite.png" class="infoItem">
+                        <p class="infoItem Inter">Belle - это комфортный интернет-шопинг и 31 розничный магазин. 14 лет
+                            мы выпускаем одежду <br> в стиле сasual для любых ситуаций, времени года и погоды, помогая
+                            покупателям создать<br> свой собственный, неповторимый образ.</p>
+                    </div>
+                </div>
+            </div>
+
+        </bottom>
 
 
     </wraper>
