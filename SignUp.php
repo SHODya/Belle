@@ -1,115 +1,114 @@
 <?php
-require_once 'config/connect.php';
+require_once __DIR__ . '/config/helpers.php';
+checkGuest();
 ?>
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	// Проверка наличия данных
-	if (isset($_POST['name']) && isset($_POST['Email']) && isset($_POST['password']) && isset($_POST['confirm_password'])) {
-		// Получение данных из формы
-		$name = $_POST['name'];
-		$email = $_POST['Email'];
-		$password = $_POST['password'];
-		$confirm_password = $_POST['confirm_password'];
-
-		// Проверка совпадения паролей
-		if ($password !== $confirm_password) {
-			echo "Введенные пароли не совпадают!";
-		} else {
-			// Хеширование пароля перед сохранением
-			$hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-			// SQL-запрос для вставки данных в таблицу Users
-			$sql = "INSERT INTO Users (name, email, password) VALUES (?, ?, ?)";
-			if ($stmt = $mysqli->prepare($sql)) {
-				// Привязка параметров
-				$stmt->bind_param("sss", $name, $email, $hashed_password);
-
-				// Попытка выполнения запроса
-				if ($stmt->execute()) {
-					echo "Пользователь успешно зарегистрирован!";
-					header("Location: SignIn.php");
-				} else {
-					echo "Ошибка при выполнении запроса: " . $stmt->error;
-				}
-
-				// Закрытие запроса
-				$stmt->close();
-			} else {
-				echo "Ошибка при подготовке запроса: " . $mysqli->error;
-			}
-		}
-	} else {
-		echo "Пожалуйста, заполните все поля формы!";
-	}
-}
-?>
-
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru" data-theme="light">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Регистрация</title>
-	<link href="style.scss" rel="stylesheet">
-	<script src="script.js" defer></script>
-</head>
+    <meta charset="UTF-8">
+    <title>Регистрация аккаунта</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"> -->
+    <link rel="stylesheet" href="css/picoMin.css">
+    <link rel="stylesheet" href="css/app.css">
 
+</head>
 <body>
 
+<form class="card" action="config/actions/register.php" method="post" enctype="multipart/form-data">
+	<div class="form-group">
+	<a href="SignIn.php"><h1 class="form-g-element gray">Вход</h1></a>
+	<h1 class="form-g-element">\</h1>
+	<h1 class="form-g-element">Регистрация</h1>
+	</div>
 
-	<form action="#" method="post">
-		<div class="LogReg">
-			<nav class="navbar">
+    <label for="name">
+        Имя
+        <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Иванов Иван"
+            value="<?php echo old('name') ?>"
+            <?php echo validationErrorAttr('name'); ?>
+        >
+        <?php if(hasValidationError('name')): ?>
+            <small><?php echo validationErrorMessage('name'); ?></small>
+        <?php endif; ?>
+    </label>
 
-				<div class="jc-c margin-12">
-					<a href="index.php"><img src="images/BelleLogo.png"></a>
-				</div>
+    <label for="email">
+        E-mail
+        <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="ivan@areaweb.su"
+            value="<?php echo old('email') ?>"
+            <?php echo validationErrorAttr('email'); ?>
+        >
+        <?php if(hasValidationError('email')): ?>
+            <small><?php echo validationErrorMessage('email'); ?></small>
+        <?php endif; ?>
+    </label>
 
-				<div class="container jc-c">
-					<div class="menu margin-36">
-						<ul class="navbar-nav ml-auto">
-							<li class="nav-item">
-								<a href="SignIn.php" class="nav-link navbar-item-text fontSize-24 gray">Войти</a>
-							</li>
-							<li class="nav-item">
-								<p class="navbar-item-text fontSize-20">\</p>
-							</li>
-							<li class="nav-item">
-								<p class="nav-link navbar-item-text fontSize-24">Регистрация</p>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-		<p>
-			<label for="Name" class="floatLabel">Имя</label>
-			<input id="name" name="name" type="text">
-		</p>
-		<p>
-			<label for="Email" class="floatLabel">Почта</label>
-			<input id="Email" name="Email" type="email">
-			<span id="emailError" class="error">Некорректный email адрес</span>
-		</p>
-		<p>
-			<label for="password" class="floatLabel">Пароль</label>
-			<input id="password" name="password" type="password">
-			<span id="passwordLatinError" class="error mrgnbtm-4">Введите пароль латинскими буквами либо цифрами</span>
-			<span id="passwordLengthError" class="error">Введите пароль длиннее 8 символов</span>
-		</p>
-		<p>
-			<label for="confirm_password" class="floatLabel">Подтвердите пароль</label>
-			<input id="confirm_password" name="confirm_password" type="password">
-			<span id="confirmPasswordError" class="error">Ваши пароли не совпадают</span>
-		</p>
-		<p>
-			<input type="submit" value="Создать аккаунт" id="submit" disabled>
-		</p>
-	</form>
+    <label for="avatar">Изображение профиля
+        <input
+            type="file"
+            id="avatar"
+            name="avatar"
+            <?php echo validationErrorAttr('avatar'); ?>
+        >
+        <?php if(hasValidationError('avatar')): ?>
+            <small><?php echo validationErrorMessage('avatar'); ?></small>
+        <?php endif; ?>
+    </label>
+
+    <div class="grid">
+        <label for="password">
+            Пароль
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="******"
+                <?php echo validationErrorAttr('password'); ?>
+            >
+            <?php if(hasValidationError('password')): ?>
+                <small><?php echo validationErrorMessage('password'); ?></small>
+            <?php endif; ?>
+        </label>
+
+        <label for="password_confirmation">
+            Подтверждение
+            <input
+                type="password"
+                id="password_confirmation"
+                name="password_confirmation"
+                placeholder="******"
+            >
+        </label>
+    </div>
+
+    <fieldset>
+        <label for="terms">
+            <input
+                type="checkbox"
+                id="terms"
+                name="terms"
+            >
+            Я принимаю все условия пользования
+        </label>
+    </fieldset>
+
+    <button
+        type="submit"
+        id="submit"
+        
+    >Продолжить</button>
+</form>
+
+
+<?php include_once __DIR__ . '/components/scripts.php' ?>
 </body>
-
 </html>

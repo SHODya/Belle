@@ -1,49 +1,33 @@
 <?php
-// Проверяем, установлена ли сессия авторизации
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    // Если сессия не установлена, перенаправляем на страницу входа
-    header("Location: SignIn.php");
-    exit();
-}
+require_once __DIR__ . '/config/helpers.php';
 
-// Если сессия установлена, получаем информацию о пользователе
-require_once 'config/connect.php';
+checkAuth();
 
-$user_id = $_SESSION['user_id'];
-$sql = "SELECT name, email FROM Users WHERE id = ?";
-if ($stmt = $mysqli->prepare($sql)) {
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $stmt->bind_result($name, $email);
-    $stmt->fetch();
-    $stmt->close();
-} else {
-    echo "Ошибка при подготовке запроса: " . $mysqli->error;
-}
+$user = currentUser();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Личный кабинет</title>
-    <link href="style.scss" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="css/picoMin.css">
+    <link rel="stylesheet" href="css/app.css">
 </head>
-
 <body>
 
-    <h1>Добро пожаловать в ваш личный кабинет, <?php echo $name; ?>!</h1>
-    <p>Имя: <?php echo $name; ?></p>
-    <p>Email: <?php echo $email; ?></p>
+<div class="card home">
+    <img
+        class="avatar"
+        src="<?php echo $user['avatar'] ?>"
+        alt="<?php echo $user['name'] ?>"
+    >
+    <h1>Привет, <?php echo $user['name'] ?>!</h1>
+    <form action="config/actions/logout.php" method="post">
+        <button role="button">Выйти из аккаунта</button>
+    </form>
+</div>
 
-    <!-- Добавьте другие элементы интерфейса и функциональность здесь -->
-
-    <p><a href="logout.php">Выйти из аккаунта</a></p>
+<?php include_once __DIR__ . '/components/scripts.php' ?>
 </body>
-
 </html>
