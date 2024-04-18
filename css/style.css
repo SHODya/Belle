@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://justfreefonts.com/download-font.php?font_id=421');
-html, body{
+
+html,
+body {
     font-family: 'Arial', sans-serif;
 }
-html, body {
+
+html,
+body {
     height: 100%;
     width: 100%;
 }
@@ -45,15 +49,17 @@ html, body {
     padding: 6px 12px;
     text-decoration: none;
 }
+
 .navbar {
     width: 100%;
 }
+
 .nav-link:hover {
     text-transform: none;
 }
 
 .link-line {
-    padding-left:12px;
+    padding-left: 12px;
 }
 
 .link-custom {
@@ -241,18 +247,18 @@ html, body {
 }
 
 .popular-block {
-   margin-right: 45px;
-   padding: 0;
-   display: flex;
-   flex-direction: column;
+    margin-right: 45px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .popular-block:last-of-type {
     margin-right: 0px;
     padding: 0;
- }
+}
 
- .item-fav1 {
+.item-fav1 {
     position: absolute;
     top: 20px;
     left: 309px;
@@ -277,7 +283,7 @@ html, body {
     background: transparent;
     border: none;
     outline: none;
-    color:grey;
+    color: grey;
 }
 
 .margin-12 {
@@ -339,7 +345,7 @@ html, body {
     height: 400px;
     margin-top: 72px;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
 .bottomInfos {
@@ -374,3 +380,88 @@ html, body {
     align-items: center;
 }
 
+.header-link-line {
+    margin: 0;
+    margin-left: 10.5%;
+    font-size: 12px;
+    width: 80%;
+}
+
+.cabinet-left-menu {
+    max-width: 80%;
+    margin-right: 60px;
+}
+
+.cabinet-ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    margin-left: 230px;
+}
+
+.cabinet-li {
+    border: 1px solid #8d969c;
+    margin: 0.5px;
+    padding-left: 4px;
+    width: 150px;
+}
+
+/* Применяем стили ко всем li элементам, кроме первого */
+.cabinet-li:not(:first-child):not(.li-active):hover {
+    border: 2px solid gray;
+    margin: 0.5px;
+    padding-left: 4px;
+    width: 150px;
+}
+
+.li-active {
+    border-left: 2px solid red;
+}
+
+.cabinet-main {
+    display: flex;
+}
+
+.avatar-block {
+    margin-top: 20px;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid gray;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+input[type="tel"]::placeholder,
+input[type="text"]::placeholder {
+    font-size: 20px;
+    color: black;
+}
+
+input[type="tel"],
+input[type="text"] {
+    width: 250px;
+    border: 0;
+    border-bottom: 2px solid black;
+    ;
+}
+
+.blck-btn {
+    border: 0;
+    background-color: rgb(66, 66, 66);
+    color: white;
+}
+
+.space-btw {
+    display: flex;
+    justify-content: space-between;
+}

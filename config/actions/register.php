@@ -46,7 +46,7 @@ if (!empty($avatar)) {
 if (!empty($_SESSION['validation'])) {
     setOldValue('name', $name);
     setOldValue('email', $email);
-    redirect('/register.php');
+    redirect('actions/register.php');
 }
 
 //  Загружаем аватарку, если она была отправлена в форме

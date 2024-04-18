@@ -4,6 +4,15 @@ session_start();
 
 require_once __DIR__ . '/config.php';
 
+$pdo = getPDO();
+$user_id = $_SESSION['user_id'] ?? null;
+$stmt = $pdo->prepare("SELECT name, email, phone FROM users WHERE id = :user_id");
+$stmt->execute(['user_id' => $user_id]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+$phone = $user['phone'] ?? '';
+$name = $user['name'] ?? '';
+$email = $user['email'] ?? '';
+
 function redirect(string $path)
 {
     header("Location: $path");
