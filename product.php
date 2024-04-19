@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/config/helpers.php';
+require_once __DIR__ . '\config\helpers.php';
 
 $id = 12; // Пример: ID товара, который вы хотите отобразить
 $sql = "SELECT name, price, id FROM Products WHERE id = $id";
@@ -158,12 +158,6 @@ if ($result->num_rows > 0) {
                 </div>
             </div>
         </div>
-        <?
-        echo "<p>Product ID: " . $productId . " (тип: " . gettype($productId) . ")</p>";
-        echo "<p>Price: " . $price . " (тип: " . gettype($price) . ")</p>";
-        echo "<p>Quantity: " . $quantity . " (тип: " . gettype($quantity) . ")</p>";
-        echo "<p>User ID: " . $userId . " (тип: " . gettype($userId) . ")</p>";
-        ?>
 
         <bottom>
             <div class="bottomInfo">
