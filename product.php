@@ -95,7 +95,7 @@ if ($result->num_rows > 0) {
                 </div>
                 <div class="four-image">
                     <img class="padding-6" src="images/product-smallImg1.jpg" alt="">
-                    <img class="" src="images/product-smallImg2.jpg" alt="">
+                    <img class="product-image" src="images/product-smallImg2.jpg" alt="">
                     <img class="padding-6" src="images/product-smallImg3.jpg" alt="">
                     <img class="" src="images/product-smallImg4.jpg" alt="">
                 </div>
@@ -118,6 +118,7 @@ if ($result->num_rows > 0) {
                     <div class="product-buttons margin-bottom-20 ">
                         <button class="add-to-cart-btn" data-product-id="<?php echo $id; ?>"
                             data-price="<?php echo $price; ?>"
+                            data-name="<?php echo $name; ?>"
                             data-user-id="<?php echo currentUser()['id']; ?>">Добавить в корзину</button>
 
                         <button class="clear-btn margin-12"><img src="images/HeartVoid.png" alt=""

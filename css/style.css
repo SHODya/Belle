@@ -251,6 +251,7 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
+    border: 1px solid black;
 }
 
 .popular-block:last-of-type {
@@ -445,6 +446,10 @@ body {
     width: 80%;
 }
 
+.cabinet-main {
+    display: flex;
+}
+
 .cabinet-left-menu {
     max-width: 80%;
     margin-right: 60px;
@@ -456,7 +461,6 @@ body {
     padding-left: 0;
     display: flex;
     flex-direction: column;
-    margin-left: 230px;
 }
 
 .cabinet-li {
@@ -476,10 +480,6 @@ body {
 
 .li-active {
     border-left: 2px solid red;
-}
-
-.cabinet-main {
-    display: flex;
 }
 
 .avatar-block {
@@ -617,7 +617,7 @@ input[type="text"] {
 .three-img {
     display: flex;
     flex-wrap: wrap;
-    max-width: 282px;
+    max-width: 284px;
     max-height: 480px;
     border: 2px solid black;
     margin: 10px;
@@ -628,7 +628,7 @@ input[type="text"] {
 .two-img {
     display: flex;
     max-width: 480px;
-    max-height: 372px;
+    max-height: 374px;
     border: 2px solid black;
     margin: 10px;
     align-items: center;

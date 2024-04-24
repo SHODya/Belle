@@ -91,21 +91,21 @@ $images = mysqli_fetch_all($images_result);
 
         <main class="main">
             <div class="main-Img">
-                <a href="#"><img src="images/mainImg.png" class="full-img"></a>
+                <a href="man.php"><img src="images/mainImg.png" class="full-img"></a>
             </div>
             <div class="Content-Blocks">
                 <div class="Content-Block">
                     <a href="">
                         <img src="images/img4.jpg" class="size1-img">
-                        <a href="index.html" class="Left-Black-p link-custom">Твой новый топ</a>
-                        <a href="product.php" class="Left-Black-p-buy link-custom">Купить</a>
+                        <a href="woman.php" class="Left-Black-p link-custom">Твой новый топ</a>
+                        <a href="woman.php" class="Left-Black-p-buy link-custom">Купить</a>
                     </a>
                 </div>
                 <div class="Content-Block">
                     <a href="">
                         <img src="images/img3.jpg" class="size1-img">
-                        <a href="index.html" class="Right-White-p link-custom">Летняя коллекция</a>
-                        <a href="index.html" class="Right-White-p-buy link-custom">Купить</a>
+                        <a href="woman.php" class="Right-White-p link-custom">Летняя коллекция</a>
+                        <a href="woman.php" class="Right-White-p-buy link-custom">Купить</a>
                     </a>
                 </div>
 
@@ -119,7 +119,6 @@ $images = mysqli_fetch_all($images_result);
         echo '<div class="popular">';
         echo '<div class="alItems-c">';
         echo '<a href="index.html" class="nav-link">Популярное</a>';
-        echo '<a href="index.html"><img src="images/Arrow-right.png" class="link-line"></a>';
         echo '</div>';
         echo '<div class="popular-blocks">'; // Начало контейнера для блоков
         foreach ($popular as $index => $popproduct) {

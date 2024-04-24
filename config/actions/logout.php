@@ -10,4 +10,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 logout();
 
 // Перенаправление после выхода из аккаунта должно быть на страницу входа, а не на кабинет
-redirect('/SignIn.php');
+redirect('../../SignIn.php');

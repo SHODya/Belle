@@ -43,8 +43,8 @@ $user = currentUser();
                 </nav>
                 <div class="menu">
                     <nav class="nav-item btn">
-                        <a href=""><img class="nav-img" src="images/Heart.png"></a>
-                        <a href=""><img class="nav-img" src="images/Bag.png"></a>
+                        <a href="favorite.php"><img class="nav-img" src="images/Heart.png"></a>
+                        <a href="cart.php"><img class="nav-img" src="images/Bag.png"></a>
                         <a href="SignIn.php"><img class="nav-img" src="images/Profile.png"></a>
                     </nav>
                 </div>
@@ -67,10 +67,10 @@ $user = currentUser();
         <main class="cabinet-main">
             <div class="cabinet-left-menu">
                 <ul class="cabinet-ul">
-                    <li class="cabinet-li li-active"><a class="nav-link" href="#">Профиль</a></li>
-                    <li class="cabinet-li"><a class="nav-link" href="#">Избранное</a></li>
-                    <li class="cabinet-li"><a class="nav-link" href="#">Корзина</a></li>
-                    <li class="cabinet-li"><a class="nav-link" href="#">Заказы</a></li>
+                    <li class="cabinet-li li-active"><a class="nav-link" href="cabinet.php">Профиль</a></li>
+                    <li class="cabinet-li"><a class="nav-link" href="favorite.php">Избранное</a></li>
+                    <li class="cabinet-li"><a class="nav-link" href="cart.php">Корзина</a></li>
+                    <li class="cabinet-li"><a class="nav-link" href="orders.php">Заказы</a></li>
                 </ul>
             </div>
 
@@ -107,11 +107,12 @@ $user = currentUser();
                     </div>
                     <div class="space-btw">
                         <button type="submit" id="submit" class="margin-bottom-20 blck-btn">Продолжить</button>
-                        <form action="config/actions/logout.php" method="post">
-                            <button class="margin-bottom-20 blck-btn" type="submit">Выйти из аккаунта</button>
-                        </form>
                     </div>
 
+                </form>
+
+                <form action="config/actions/logout.php" method="post">
+                    <button class="margin-bottom-20 blck-btn" type="submit">Выйти из аккаунта</button>
                 </form>
 
 

@@ -9,22 +9,18 @@ if (!isset($_SESSION['user_id'])) {
     exit('Unauthorized');
 }
 
-// Check if productId, price, and quantity are provided
-if (!isset($_POST['productId'], $_POST['price'], $_POST['quantity'])) {
+// Check if productId, price, name, and quantity are provided
+if (!isset($_POST['productId'], $_POST['price'], $_POST['name'], $_POST['quantity'], $_POST['image'])) {
     http_response_code(400);
     exit('Bad request');
 }
 
 $productId = $_POST['productId'];
 $price = $_POST['price'];
+$name = $_POST['name'];
 $quantity = intval($_POST['quantity']);
 $userId = $_SESSION['user_id'];
-
-// Выводим типы данных переданных переменных
-echo "<p>Product ID: " . $productId . " (тип: " . gettype($productId) . ")</p>";
-echo "<p>Price: " . $price . " (тип: " . gettype($price) . ")</p>";
-echo "<p>Quantity: " . $quantity . " (тип: " . gettype($quantity) . ")</p>";
-echo "<p>User ID: " . $userId . " (тип: " . gettype($userId) . ")</p>";
+$image = $_POST['image'];
 
 try {
     // Check if the user exists
@@ -39,8 +35,8 @@ try {
     }
 
     // Add product to cart in the database
-    $stmt = $pdo->prepare("INSERT INTO `cart` (`user_id`, `product_id`, `quantity`, `price`, `created_at`) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)");
-    $stmt->execute([$userId, $productId, $quantity, $price]);
+    $stmt = $pdo->prepare("INSERT INTO `cart` (`name`, `product-image`, `user_id`, `product_id`, `quantity`, `price`, `created_at`) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)");
+    $stmt->execute([$name, $image, $userId, $productId, $quantity, $price]);
 
     if ($stmt->errorCode() !== '00000') {
         $errorInfo = $stmt->errorInfo();
@@ -53,4 +49,3 @@ try {
     http_response_code(500);
     exit('Database error: ' . $e->getMessage());
 }
-?>
