@@ -1,10 +1,20 @@
 <?php
+session_start();
+
+require_once __DIR__ . '/config/config.php';
 require_once __DIR__ . '/config/helpers.php';
 
 checkAuth();
 
+// Retrieve cart items from the database for the current user
+$pdo = getPDO();
+$stmt = $pdo->prepare("SELECT * FROM orders WHERE user_id = ?");
+$stmt->execute([$_SESSION['user_id']]);
+$orderItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $user = currentUser();
+
 ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -43,8 +53,8 @@ $user = currentUser();
                 </nav>
                 <div class="menu">
                     <nav class="nav-item btn">
-                        <a href=""><img class="nav-img" src="images/Heart.png"></a>
-                        <a href=""><img class="nav-img" src="images/Bag.png"></a>
+                        <a href="favorite.php"><img class="nav-img" src="images/Heart.png"></a>
+                        <a href="cart.php"><img class="nav-img" src="images/Bag.png"></a>
                         <a href="SignIn.php"><img class="nav-img" src="images/Profile.png"></a>
                     </nav>
                 </div>
@@ -53,68 +63,56 @@ $user = currentUser();
         <div class="header-link-line">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link gray">Главная</a>
+                    <a href="/index.php" class="nav-link gray">Главная</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link gray">></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link gray">Аккаунт</a>
+                    <a href="cabinet.php" class="nav-link gray">Аккаунт</a>
                 </li>
             </ul>
         </div>
 
-        <main class="cabinet-main">
-            <div class="cabinet-left-menu">
+        <main class="cabinet-main margin-left-11pr">
+            <div class="cabinet-left-menu ">
                 <ul class="cabinet-ul">
-                    <li class="cabinet-li li-active"><a class="nav-link" href="#">Профиль</a></li>
-                    <li class="cabinet-li"><a class="nav-link" href="#">Избранное</a></li>
-                    <li class="cabinet-li"><a class="nav-link" href="#">Корзина</a></li>
-                    <li class="cabinet-li"><a class="nav-link" href="#">Заказы</a></li>
+                    <li class="cabinet-li"><a class="nav-link" href="cabinet.php">Профиль</a></li>
+                    <li class="cabinet-li"><a class="nav-link" href="favorite.php">Избранное</a></li>
+                    <li class="cabinet-li"><a class="nav-link" href="cart.php">Корзина</a></li>
+                    <li class="cabinet-li li-active"><a class="nav-link" href="orders.php">Заказы</a></li>
                 </ul>
             </div>
 
-            <div class="User-info margin-bottom-20">
-                <h2 class="margin-bottom-20">Профиль</h2>
-                <div class="margin-bottom-20">
-                    <img class="avatar"
-                        src="<?php echo isset($user['avatar']) ? $user['avatar'] : 'images/default_avatar.jpg' ?>"
-                        alt="<?php echo $user['name'] ?>">
-                </div>
-                <h2 class="margin-bottom-20">Здравствуйте, <?php echo $user['name'] ?>!</h2>
+            <div class="User-info margin-bottom-10pr">
+                <h2 class="margin-bottom-20">Заказы</h2>
 
 
-                <!-- Форма обновления данных -->
-                <form action="config/actions/update.php" method="post" enctype="multipart/form-data">
-                    <div class="margin-bottom-20">
-                        <!-- Если значение для поля name не указано, выводим "Введите имя", иначе выводим текущее значение -->
-                        <label for="name">
-                            <input type="text" id="name" name="name"
-                                placeholder="<?php echo $name ? $name : 'Введите имя' ?>">
-                        </label>
-
-                        <!-- Если значение для поля email не указано, выводим "Введите email", иначе выводим текущее значение -->
-                        <label for="email">
-                            <input type="text" id="email" name="email"
-                                placeholder="<?php echo $email ? $email : 'Введите email' ?>">
-                        </label>
-
-                        <!-- Если значение для поля phone не указано, выводим "Введите номер телефона", иначе выводим текущее значение -->
-                        <label for="phone">
-                            <input type="tel" id="phone" name="phone"
-                                placeholder="<?php echo $phone ? $phone : 'Введите номер телефона' ?>">
-                        </label>
+                <?php foreach ($orderItems as $item): ?>
+                    <!-- Форма обновления данных -->
+                    <div class="border-div padding-24 flex width-900 margin-bottom-20">
+                        <div class="margin-left-20">
+                            <h3 class="padding-left-6">
+                                Номер заказа: <?php echo $item['id'];?> (показать на кассе)
+                            </h3>
+                            <p class="padding-left-6">
+                                Пункт выдачи: <?php echo $item['delivery-point']; ?>
+                            </p>
+                            <p class="padding-left-6">
+                                Содержимое заказа: <?php echo $item['product_list']; ?>
+                            </p>
+                            <p class="padding-left-6">
+                                Время заказа: <?php echo $item['created_at']; ?>
+                            </p>
+                            <p class="padding-left-6">
+                                К оплате: <?php echo $item['price']; ?> тг
+                            </p>
+                            <p class="padding-left-6">
+                                Номер телефона заказчика: <?php echo $phone ?>
+                            </p>
+                        </div>
                     </div>
-                    <div class="space-btw">
-                        <button type="submit" id="submit" class="margin-bottom-20 blck-btn">Продолжить</button>
-                        <form action="config/actions/logout.php" method="post">
-                            <button class="margin-bottom-20 blck-btn" type="submit">Выйти из аккаунта</button>
-                        </form>
-                    </div>
-
-                </form>
-
-
+                <?php endforeach; ?>
 
 
             </div>
@@ -122,6 +120,44 @@ $user = currentUser();
 
         </main>
 
+        <bottom>
+            <div class="bottomInfo">
+                <div class="bottomInfos">
+                    <div class="margin-12">
+                        <a href="" class="infoHeader Inter nav-link">Покупателю</a>
+                        <a href="" class="infoItem Inter nav-link">Акции</a>
+                        <a href="" class="infoItem Inter nav-link">Доставка</a>
+                        <a href="" class="infoItem Inter nav-link">Оплата</a>
+                        <a href="" class="infoItem Inter nav-link">Обмен и возврат</a>
+                        <a href="" class="infoItem Inter nav-link">Забрать в магазине</a>
+                        <a href="" class="infoItem Inter nav-link">Размеры</a>
+                        <a href="" class="infoItem Inter nav-link">FAQ</a>
+                        <a href="" class="infoItem Inter nav-link">Уход за одеждой</a>
+                    </div>
+                    <div class="margin-12">
+                        <a href="" class="infoHeader Inter nav-link">Клубная программа</a>
+                        <a href="" class="infoItem Inter nav-link">Частые вопросы</a>
+                        <a href="" class="infoItem Inter nav-link">Правила участия</a>
+                        <a href="" class="infoItem Inter nav-link">Стать участником</a>
+                        <a href="" class="infoItem Inter nav-link">Виды карт</a>
+                    </div>
+                    <div class="margin-12">
+                        <a href="" class="infoHeader Inter nav-link">О компании</a>
+                        <a href="" class="infoItem Inter nav-link">Новости</a>
+                        <a href="" class="infoItem Inter nav-link">Адреса магазинов</a>
+                        <a href="" class="infoItem Inter nav-link">Публичная оферта</a>
+                        <a href="" class="infoItem Inter nav-link">Пользовательское соглашение</a>
+                    </div>
+                    <div class="margin-12">
+                        <img src="images/BelleWhite.png" class="infoItem">
+                        <p class="infoItem Inter">Belle - это комфортный интернет-шопинг и 31 розничный магазин. 14 лет
+                            мы выпускаем одежду <br> в стиле сasual для любых ситуаций, времени года и погоды, помогая
+                            покупателям создать<br> свой собственный, неповторимый образ.</p>
+                    </div>
+                </div>
+            </div>
+
+        </bottom>
 
 
     </wraper>
