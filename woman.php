@@ -60,7 +60,7 @@
             </div>
             <h1 class="margin-left-11pr">Женская одежда</h1>
             <hr class="custom-line" />
-            <div class="inl-block wrap">
+            <div class="inl-block wrap margin-left-11pr">
                 <div class="cabinet-left-menu">
                     <ul class="cabinet-ul">
                         <li class="margin-bottom-12 black fontSize-18">
@@ -82,7 +82,7 @@
                 </div>
 
 
-                <div id="new" class="popular">
+                <div id="new" class="popular margin-bottom-20">
                     <div class="links-line">
                         <h3>Новинки</h3>
                     </div>
@@ -96,7 +96,7 @@
 
                         </div>
                         <div class="popular-block">
-                            <a href="index.html"><img src="images/womanNew1.jpg" class="popular-img"></a>
+                            <a href="product.php"><img src="images/womanNew1.jpg" class="popular-img"></a>
                             <button id="heartVoid2" class="item-fav2 fav-btn"><i class="fa-solid fa-heart"
                                     onclick="changeImage(this)"></i></button>
                             <a href="product.php" class="Inter nav-link margin-12">Джемпер-анорак</a>
@@ -112,7 +112,7 @@
                     </div>
                 </div>
 
-                <div id="categories" class="five-img-block margin-left-11pr">
+                <div id="categories" class="five-img-block">
                     <div class="inl-block">
                         <div class="three-img">
                             <img class="" src="images/womanJackets.jpg" alt="">
@@ -131,17 +131,17 @@
                     <div class="inl-block">
                         <div class="two-img">
                             <img class="" src="images/womanAccessories.jpg" alt="">
-                            <p class="">Аксессуары</p>
+                            <p class="margin-left-20">Аксессуары</p>
                         </div>
                         <div class="two-img">
                             <img class="" src="images/bagsBagpacks.jpg" alt="">
-                            <p class="">Сумки и рюкзаки</p>
+                            <p class="margin-left-20">Сумки и рюкзаки</p>
                         </div>
                     </div>
 
                 </div>
 
-                <div id="popular" class="popular margin-left-19pr">
+                <div id="popular" class="popular margin-left-7pr">
                     <div class="links-line">
                         <a href="index.html" class="nav-link fontSize-24">Популярное</a>
                     </div>
@@ -170,7 +170,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </main>
 

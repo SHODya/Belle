@@ -107,27 +107,27 @@ if ($result->num_rows > 0) {
                         <p class="gray"><?php echo $id; ?></p>
                     </div>
 
+                    <div class="inl-block">
+                        <p class="">ЦВЕТ:</p>
+                        <p class="product-color">Белый</p>
+                    </div>
+
                     <p class=""><?php echo $price; ?> тг</p>
                     <p class="">Размер</p>
                     <div class="product-buttons margin-bottom-20">
-                        <button class="white-btn padding-12">XS</button>
-                        <button class="white-btn padding-12">S</button>
-                        <button class="white-btn padding-12">M</button>
-                        <button class="white-btn padding-12">L</button>
+                        <button class="white-btn padding-12 size-btn" data-size="XS">XS</button>
+                        <button class="white-btn padding-12 size-btn" data-size="S">S</button>
+                        <button class="white-btn padding-12 size-btn" data-size="M">M</button>
+                        <button class="white-btn padding-12 size-btn" data-size="L">L</button>
                     </div>
                     <div class="product-buttons margin-bottom-20 ">
                         <button class="add-to-cart-btn" data-product-id="<?php echo $id; ?>"
-                            data-price="<?php echo $price; ?>"
-                            data-name="<?php echo $name; ?>"
-                            data-user-id="<?php echo currentUser()['id']; ?>">Добавить в корзину</button>
-
-                        <button class="clear-btn margin-12"><img src="images/HeartVoid.png" alt=""
-                                class="small-custom2"></button>
+                            data-price="<?php echo $price; ?>" data-name="<?php echo $name; ?>"
+                            data-user-id="<?php echo currentUser()['id']; ?>" data-size="">Добавить в корзину</button>  
+                        <button id="heartVoid1" class="fav-btn"><i class="fa-solid fa-heart small-custom2"
+                                onclick="changeImage(this)"></i></button>
                     </div>
-                    <div class="inl-block">
-                        <img class="small-custom margin-right-10" src="images/Warning.png" alt="">
-                        <p class="margin-padding-0"> Доставка курьером: не доступна</p>
-                    </div>
+                    <p class="margin-padding-0 border-bottom"> Доставка курьером: не доступна</p>
 
                     <br>
                     <div class="product-description">

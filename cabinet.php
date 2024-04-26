@@ -64,8 +64,8 @@ $user = currentUser();
             </ul>
         </div>
 
-        <main class="cabinet-main">
-            <div class="cabinet-left-menu">
+        <main class="cabinet-main margin-left-11pr">
+            <div class="cabinet-left-menu ">
                 <ul class="cabinet-ul">
                     <li class="cabinet-li li-active"><a class="nav-link" href="cabinet.php">Профиль</a></li>
                     <li class="cabinet-li"><a class="nav-link" href="favorite.php">Избранное</a></li>
@@ -74,7 +74,7 @@ $user = currentUser();
                 </ul>
             </div>
 
-            <div class="User-info margin-bottom-20">
+            <div class="User-info margin-bottom-10pr">
                 <h2 class="margin-bottom-20">Профиль</h2>
                 <div class="margin-bottom-20">
                     <img class="avatar"

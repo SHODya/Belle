@@ -3,7 +3,8 @@
 
 html,
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Blue curve', normal;
+    font-size: 20px;
 }
 
 html,
@@ -76,17 +77,12 @@ body {
 .navbar-item-text {
     margin: 0;
     color: #000;
-    font-family: "Arial";
-    font-size: 18px;
-    font-style: sans-serif;
-    font-weight: 400;
-    line-height: normal;
-    padding: 0;
+    font-size: 24px;
 }
 
 .poster-text {
     color: #000;
-    font-family: Blue curve;
+    font-family: "Blue curve";
     font-size: 64px;
     font-style: sans-serif;
     font-weight: 300;
@@ -94,15 +90,15 @@ body {
 }
 
 .Inter {
-    font-family: "Arial";
-    font-style: sans-serif;
+    font-family: "Inter";
+    font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 
 .BlueCurve {
-    font-family: Arial;
-    font-style: sans-serif;
+    font-family: "Blue curve";
+    font-style: normal;
     font-weight: 300;
     line-height: normal;
 }
@@ -301,6 +297,10 @@ body {
     padding: 12px;
 }
 
+.padding-24 {
+    padding: 24px;
+}
+
 .padding-left-6 {
     padding-left: 6px;
 }
@@ -337,12 +337,28 @@ body {
     margin: 356px;
 }
 
+.margin-bottom-10pr {
+    margin-bottom: 10%;
+}
+
+.margin-bottom-150 {
+    margin-bottom: 150px;
+}
+
 .margin-bottom-20 {
     margin-bottom: 20px;
 }
 
 .margin-bottom-12 {
     margin-bottom: 12px;
+}
+
+.margin-bottom-6 {
+    margin-bottom: 6px;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0px;
 }
 
 .margin-right-10 {
@@ -526,7 +542,8 @@ input[type="text"] {
 }
 
 .white-btn {
-    border: 1px solid black;;
+    border: 1px solid black;
+    ;
     background-color: white;
     color: black;
 }
@@ -594,12 +611,20 @@ input[type="text"] {
     height: 36px;
 }
 
+.margin-left-7pr {
+    margin-left: 7%;
+}
+
 .margin-left-11pr {
     margin-left: 11%;
 }
 
 .margin-left-19pr {
     margin-left: 19%;
+}
+
+.margin-left-20 {
+    margin-left: 20px;
 }
 
 .custom-line {
@@ -611,7 +636,7 @@ input[type="text"] {
 }
 
 .five-img-block {
-    margin: 0 auto;
+    margin-left: 11.9%;
 }
 
 .three-img {
@@ -621,16 +646,129 @@ input[type="text"] {
     max-height: 480px;
     border: 2px solid black;
     margin: 10px;
+    margin-left: 0px;
+    margin-right: 80px;
     justify-content: center;
     font-size: 24px;
 }
 
 .two-img {
     display: flex;
-    max-width: 480px;
+    width: 431px;
     max-height: 374px;
     border: 2px solid black;
     margin: 10px;
+    margin-left: 0px;
+    margin-right: 150px;
     align-items: center;
     font-size: 24px;
+}
+
+.border-div {
+    border: 1px solid rgb(175, 175, 175);
+}
+
+.ul-no-pointers {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.width-80 {
+    width: 80%;
+}
+
+.width-900 {
+    width: 900px;
+}
+
+.flex {
+    display: flex;
+}
+
+.item-price {
+    padding-left: 6px;
+}
+
+
+.quantity-control {
+    display: flex;
+    border: 2px solid rgb(176, 176, 176);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.quantity-control button {
+    background-color: rgb(149, 149, 149);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    width: 30px;
+    height: auto;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+.quantity-control button:hover {
+    background-color: gray;
+}
+
+.quantity-input {
+    width: 150px;
+    text-align: center;
+    border: none;
+    font-size: 24px;
+    outline: none;
+}
+
+/* Hide the number input spin buttons */
+.quantity-input::-webkit-inner-spin-button,
+.quantity-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity-input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.order-button {
+    border: 0;
+    background-color: rgb(103, 103, 103);
+    color: white;
+
+    font-size: 30px;
+
+    text-align: center;
+
+    width: 250px;
+    border-radius: 10px;
+}
+
+.order-button:hover {
+    border: 0;
+    background-color: rgb(66,66,66);
+    color: white;
+
+    font-size: 30px;
+
+    text-align: center;
+
+    width: 250px;
+    border-radius: 10px;
+}
+
+.delivery-button {
+    border: none;
+    border-bottom: 1px solid gray;
+    color: gray;
+}
+
+.delivery-button-active {
+    border: none;
+    border-bottom: 1px solid gray;
+
 }

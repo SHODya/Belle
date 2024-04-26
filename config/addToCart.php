@@ -9,8 +9,8 @@ if (!isset($_SESSION['user_id'])) {
     exit('Unauthorized');
 }
 
-// Check if productId, price, name, and quantity are provided
-if (!isset($_POST['productId'], $_POST['price'], $_POST['name'], $_POST['quantity'], $_POST['image'])) {
+// Check if productId, price, name, quantity, image, and color are provided
+if (!isset($_POST['productId'], $_POST['price'], $_POST['name'], $_POST['quantity'], $_POST['image'], $_POST['color'])) {
     http_response_code(400);
     exit('Bad request');
 }
@@ -21,6 +21,8 @@ $name = $_POST['name'];
 $quantity = intval($_POST['quantity']);
 $userId = $_SESSION['user_id'];
 $image = $_POST['image'];
+$color = $_POST['color'];
+$size = $_POST['size'];
 
 try {
     // Check if the user exists
@@ -35,8 +37,8 @@ try {
     }
 
     // Add product to cart in the database
-    $stmt = $pdo->prepare("INSERT INTO `cart` (`name`, `product-image`, `user_id`, `product_id`, `quantity`, `price`, `created_at`) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)");
-    $stmt->execute([$name, $image, $userId, $productId, $quantity, $price]);
+    $stmt = $pdo->prepare("INSERT INTO `cart` (`name`, `product-image`, `user_id`, `product_id`, `quantity`, `price`, `color`, `size`, `created_at`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)");
+    $stmt->execute([$name, $image, $userId, $productId, $quantity, $price, $color, $size]);
 
     if ($stmt->errorCode() !== '00000') {
         $errorInfo = $stmt->errorInfo();

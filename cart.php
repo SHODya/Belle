@@ -28,6 +28,7 @@ $user = currentUser();
         crossorigin="anonymous"></script>
     <link href="css/style.css" rel="stylesheet">
     <script src="script.js"></script>
+
     <script src="https://kit.fontawesome.com/adf5d34ddb.js" crossorigin="anonymous"></script>
     <title>Belle</title>
 </head>
@@ -39,7 +40,7 @@ $user = currentUser();
                 <div class="menu ">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="man.php" class="nav-link navbar-item-text ">Мужчинам</a>
+                            <a href="man.php" class="nav-link navbar-item-text BlueCurve">Мужчинам</a>
                         </li>
                         <li class="nav-item">
                             <a href="woman.php" class="nav-link navbar-item-text ">Женщинам</a>
@@ -89,24 +90,100 @@ $user = currentUser();
                 </ul>
             </div>
 
-            <div class="User-info margin-bottom-20">
+            <div class="margin-bottom-20">
                 <h2 class="margin-bottom-20">Корзина</h2>
-                <ul class="navbar-nav">
+
+                <div class="margin-bottom-20">
+
                     <?php foreach ($cartItems as $item): ?>
-                        <li>
-                            Имя: <?php echo $item['name']; ?>
-                        </li>
-                        <li>
-                            ID товара: <?php echo $item['product_id']; ?>
-                        </li>
-                        <li>
-                            Цена: <?php echo $item['price']; ?> тг
-                        </li>
-                        <li>
-                            <img src="<?php echo $item['product-image']; ?>" alt="Product Image">
-                        </li>
+                        <div class="">
+                            <div class="border-div padding-24 flex width-900 margin-bottom-20">
+                                <div class="">
+                                    <img src="<?php echo $item['product-image']; ?>" alt="Product Image">
+                                </div>
+                                <div class="margin-left-20">
+                                    <p class="padding-left-6 margin-bottom-0">
+                                        <?php echo $item['name']; ?>
+                                    </p>
+                                    <p class="padding-left-6 gray">
+                                        <?php echo $item['product_id']; ?>
+                                    </p>
+                                    <p class="padding-left-6 margin-bottom-0">
+                                        Размер: <?php echo $item['size']; ?>
+                                    </p>
+                                    <p class="padding-left-6">
+                                        Цвет: <?php echo $item['color']; ?>
+                                    </p>
+
+
+                                    <div class="flex padding-left-6">
+                                        <p class="">
+                                            Цена:
+                                        </p>
+                                        <p class="item-price">
+                                            <?php echo $item['price']; ?>
+                                        </p>
+                                        <p class="">
+                                            тг
+                                        </p>
+                                    </div>
+
+
+                                    <div class="quantity-control">
+                                        <button class="quantity-btn minus">-</button>
+                                        <input type="number" class="quantity-input" value="<?php echo $item['quantity']; ?>"
+                                            min="1">
+                                        <button class="quantity-btn plus">+</button>
+                                    </div>
+
+                                    <p class="padding-left-6">
+                                        Итоговая стоимость: <span class="total-price"><?php echo $item['price'] ?></span> тг
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
                     <?php endforeach; ?>
-                </ul>
+
+                    <div class="delivery ">
+                        <p class="padding-left-6 fontSize-24">
+                            1. Выберите пункт выдачи
+                        </p>
+
+                        <div class="delivery-buttons padding-left-6 margin-bottom-20">
+                            <button class="delivery-button" data-delivery="Рихарде зорге 24">Рихарде зорге 24</button>
+                            <button class="delivery-button" data-delivery="Байтурсынова 35б">Байтурсынова 35б</button>
+                        </div>
+
+                        <p class="border-bottom"></p>
+                    </div>
+
+
+                    <div class="margin-bottom-20 border-bottom">
+
+                        <p class="padding-left-6 fontSize-24">
+                            2. Общая стоимость
+                        </p>
+
+                        <p class="padding-left-6 fontSize-24 ">
+                            Всего к оплате: <span class="end-price"><?php echo $item['price'] ?></span> тг
+                        </p>
+
+                    </div>
+
+
+                    <div class="jc-c">
+                        <button class="order-button" data-delivery="" data-quantity="" data-totalPrice=""
+                            data-name="<?php echo $name; ?>"
+                            data-user-id="<?php echo currentUser()['id']; ?>">Заказать</button>
+                    </div>
+
+                </div>
 
 
 
@@ -153,7 +230,7 @@ $user = currentUser();
             </div>
 
         </bottom>
-
+        <script src="quantity.js"></script>
 
     </wraper>
 </body>
