@@ -750,7 +750,7 @@ input[type="text"] {
 
 .order-button:hover {
     border: 0;
-    background-color: rgb(66,66,66);
+    background-color: rgb(66, 66, 66);
     color: white;
 
     font-size: 30px;
@@ -771,4 +771,39 @@ input[type="text"] {
     border: none;
     border-bottom: 1px solid gray;
 
+}
+
+.cab-fav-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+
+    background: transparent;
+    border: none;
+    outline: none;
+    color: red;
+}
+
+
+.favorite-block {
+    margin-right: 45px;
+    padding: 0;
+
+    border: 1px solid black;
+
+    position: relative;
+}
+
+.favorite-block:last-of-type {
+    margin-right: 0px;
+    padding: 0;
+}
+
+.image-container {
+    position: relative;
+}
+
+.fa-heart {
+    font-size: 36px;
+    /* Установите желаемый размер */
 }

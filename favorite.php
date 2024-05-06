@@ -1,9 +1,18 @@
 <?php
+session_start();
+
+require_once __DIR__ . '/config/config.php';
 require_once __DIR__ . '/config/helpers.php';
 
 checkAuth();
 
+// Retrieve cart items from the database for the current user
+$pdo = getPDO();
+$stmt = $pdo->prepare("SELECT * FROM favorite WHERE user_id = ?");
+$stmt->execute([$_SESSION['user_id']]);
+$favoriteItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $user = currentUser();
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -17,10 +26,12 @@ $user = currentUser();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-    <link href="css/style.css" rel="stylesheet">
+
     <script src="script.js"></script>
+    <script src="cart.js"></script>
     <script src="https://kit.fontawesome.com/adf5d34ddb.js" crossorigin="anonymous"></script>
     <title>Belle</title>
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -30,7 +41,7 @@ $user = currentUser();
                 <div class="menu ">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="man.php" class="nav-link navbar-item-text ">Мужчинам</a>
+                            <a href="man.php" class="nav-link navbar-item-text BlueCurve">Мужчинам</a>
                         </li>
                         <li class="nav-item">
                             <a href="woman.php" class="nav-link navbar-item-text ">Женщинам</a>
@@ -43,8 +54,8 @@ $user = currentUser();
                 </nav>
                 <div class="menu">
                     <nav class="nav-item btn">
-                        <a href=""><img class="nav-img" src="images/Heart.png"></a>
-                        <a href=""><img class="nav-img" src="images/Bag.png"></a>
+                        <a href="favorite.php"><img class="nav-img" src="images/Heart.png"></a>
+                        <a href="cart.php"><img class="nav-img" src="images/Bag.png"></a>
                         <a href="SignIn.php"><img class="nav-img" src="images/Profile.png"></a>
                     </nav>
                 </div>
@@ -53,67 +64,63 @@ $user = currentUser();
         <div class="header-link-line">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link gray">Главная</a>
+                    <a href="index.php" class="nav-link gray">Главная</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link gray">></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link gray">Аккаунт</a>
+                    <a href="cabinet.php" class="nav-link gray">Аккаунт</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link gray">></a>
+                </li>
+                <li class="nav-item">
+                    <a href="cart.php" class="nav-link gray">Корзина</a>
                 </li>
             </ul>
         </div>
 
-        <main class="cabinet-main">
+        <main class="cabinet-main margin-left-11pr">
             <div class="cabinet-left-menu">
                 <ul class="cabinet-ul">
-                    <li class="cabinet-li li-active"><a class="nav-link" href="#">Профиль</a></li>
-                    <li class="cabinet-li"><a class="nav-link" href="#">Избранное</a></li>
-                    <li class="cabinet-li"><a class="nav-link" href="#">Корзина</a></li>
-                    <li class="cabinet-li"><a class="nav-link" href="#">Заказы</a></li>
+                    <li class="cabinet-li"><a class="nav-link" href="cabinet.php">Профиль</a></li>
+                    <li class="cabinet-li li-active"><a class="nav-link" href="favorite.php">Избранное</a></li>
+                    <li class="cabinet-li"><a class="nav-link" href="cart.php">Корзина</a></li>
+                    <li class="cabinet-li"><a class="nav-link" href="orders.php">Заказы</a></li>
                 </ul>
             </div>
 
-            <div class="User-info margin-bottom-20">
-                <h2 class="margin-bottom-20">Профиль</h2>
-                <div class="margin-bottom-20">
-                    <img class="avatar"
-                        src="<?php echo isset($user['avatar']) ? $user['avatar'] : 'images/default_avatar.jpg' ?>"
-                        alt="<?php echo $user['name'] ?>">
+            <div class="margin-bottom-20">
+
+                <div id="new" class="popular margin-bottom-20">
+                    <div class="links-line">
+                        <h3>Избранное</h3>
+                    </div>
+
+                    <div class="popular-blocks margin-bottom-150">
+                        <?php foreach ($favoriteItems as $index => $item): ?>
+                            <div class="favorite-block">
+                                <div class="fav-image-container">
+                                    <a href="index.html"><img src="<?php echo $item['product_image']; ?>"
+                                            class="popular-img"></a>
+                                    <button id="heartVoid<?php echo $index + 1; ?>" class="cab-fav-btn"
+                                        onclick="changeImage(this)">
+                                        <i class="fa-solid fa-heart fav-wh"></i>
+                                    </button>
+                                </div>
+                                <div>
+                                    <a href="" class="Inter nav-link margin-12"><?php echo $item['product_name']; ?></a>
+                                    <a href="" class="BlueCurve nav-link margin-12"><?php echo $item['price']; ?> тг</a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
                 </div>
-                <h2 class="margin-bottom-20">Здравствуйте, <?php echo $user['name'] ?>!</h2>
 
 
-                <!-- Форма обновления данных -->
-                <form action="config/actions/update.php" method="post" enctype="multipart/form-data">
-                    <div class="margin-bottom-20">
-                        <!-- Если значение для поля name не указано, выводим "Введите имя", иначе выводим текущее значение -->
-                        <label for="name">
-                            <input type="text" id="name" name="name"
-                                placeholder="<?php echo $name ? $name : 'Введите имя' ?>">
-                        </label>
-
-                        <!-- Если значение для поля email не указано, выводим "Введите email", иначе выводим текущее значение -->
-                        <label for="email">
-                            <input type="text" id="email" name="email"
-                                placeholder="<?php echo $email ? $email : 'Введите email' ?>">
-                        </label>
-
-                        <!-- Если значение для поля phone не указано, выводим "Введите номер телефона", иначе выводим текущее значение -->
-                        <label for="phone">
-                            <input type="tel" id="phone" name="phone"
-                                placeholder="<?php echo $phone ? $phone : 'Введите номер телефона' ?>">
-                        </label>
-                    </div>
-                    <div class="space-btw">
-                        <button type="submit" id="submit" class="margin-bottom-20 blck-btn">Продолжить</button>
-                        <form action="config/actions/logout.php" method="post">
-                            <button class="margin-bottom-20 blck-btn" type="submit">Выйти из аккаунта</button>
-                        </form>
-                    </div>
-
-                </form>
-
+            </div>
 
 
 
@@ -122,7 +129,45 @@ $user = currentUser();
 
         </main>
 
+        <bottom>
+            <div class="bottomInfo">
+                <div class="bottomInfos">
+                    <div class="margin-12">
+                        <a href="" class="infoHeader Inter nav-link">Покупателю</a>
+                        <a href="" class="infoItem Inter nav-link">Акции</a>
+                        <a href="" class="infoItem Inter nav-link">Доставка</a>
+                        <a href="" class="infoItem Inter nav-link">Оплата</a>
+                        <a href="" class="infoItem Inter nav-link">Обмен и возврат</a>
+                        <a href="" class="infoItem Inter nav-link">Забрать в магазине</a>
+                        <a href="" class="infoItem Inter nav-link">Размеры</a>
+                        <a href="" class="infoItem Inter nav-link">FAQ</a>
+                        <a href="" class="infoItem Inter nav-link">Уход за одеждой</a>
+                    </div>
+                    <div class="margin-12">
+                        <a href="" class="infoHeader Inter nav-link">Клубная программа</a>
+                        <a href="" class="infoItem Inter nav-link">Частые вопросы</a>
+                        <a href="" class="infoItem Inter nav-link">Правила участия</a>
+                        <a href="" class="infoItem Inter nav-link">Стать участником</a>
+                        <a href="" class="infoItem Inter nav-link">Виды карт</a>
+                    </div>
+                    <div class="margin-12">
+                        <a href="" class="infoHeader Inter nav-link">О компании</a>
+                        <a href="" class="infoItem Inter nav-link">Новости</a>
+                        <a href="" class="infoItem Inter nav-link">Адреса магазинов</a>
+                        <a href="" class="infoItem Inter nav-link">Публичная оферта</a>
+                        <a href="" class="infoItem Inter nav-link">Пользовательское соглашение</a>
+                    </div>
+                    <div class="margin-12">
+                        <img src="images/BelleWhite.png" class="infoItem">
+                        <p class="infoItem Inter">Belle - это комфортный интернет-шопинг и 31 розничный магазин. 14 лет
+                            мы выпускаем одежду <br> в стиле сasual для любых ситуаций, времени года и погоды, помогая
+                            покупателям создать<br> свой собственный, неповторимый образ.</p>
+                    </div>
+                </div>
+            </div>
 
+        </bottom>
+        <script src="quantity.js"></script>
 
     </wraper>
 </body>

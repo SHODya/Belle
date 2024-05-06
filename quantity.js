@@ -80,10 +80,10 @@ function addToOrders(
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
         // Handle success
-        showNotification("Order added successfully");
+        showNotification("Failed to add order");
       } else {
         // Handle error
-        showNotification("Failed to add order");
+        showNotification("Order added successfully");
       }
     }
   };
